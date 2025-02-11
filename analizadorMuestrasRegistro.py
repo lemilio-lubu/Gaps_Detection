@@ -7,7 +7,7 @@ class AnalizadorMuestrasRegistros(Analizador):
 
     def __analizar_muestra_registros(self, lista_stream):
         anomalias = []
-        for i in range(0, len(lista_stream)-1):
+        for i in range(0, len(lista_stream)):
             if not self.__existe_muestra_consistente(lista_stream[i]):
                 anomalias.append(lista_stream[i])
 

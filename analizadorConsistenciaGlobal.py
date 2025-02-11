@@ -20,7 +20,7 @@ class AnalizadorConsistenciaGlobal(Analizador):
     def __analizar_consistencia_global(self):
         
         stream = []
-        for i in range(0, len(self.lista_stream)-1):
+        for i in range(0, len(self.lista_stream)):
             if not self.__existe_consistencia(self.lista_stream[i]):
                 stream.append(self.lista_stream[i])
         return stream

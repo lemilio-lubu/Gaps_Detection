@@ -20,7 +20,7 @@ class AnalizadorSaltosRegistro(Analizador):
     
     def __analizar_salto_dias(self):
         stream = []
-        for i in range(len(self.stream_julian_days)-1):
+        for i in range(len(self.stream_julian_days)):
             if self.__existe_salto(i):
                 stream.append(self.lista_stream[i])
                 stream.append(self.lista_stream[i+1])

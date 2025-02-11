@@ -18,7 +18,7 @@ class AnalizadorContinuidadRegistro(Analizador):
             return False
         delta = 1.0 / stream[0].stats.sampling_rate
         
-        for i in range(len(stream)-1):
+        for i in range(len(stream)):
             registro_actual = stream[i]
             registro_siguiente = stream[i+1]
             fin_actual = registro_actual.stats.endtime
