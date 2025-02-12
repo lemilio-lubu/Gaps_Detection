@@ -1,4 +1,4 @@
-from analizador import Analizador
+from src.gapfinder.analizador import Analizador
 from obspy import read
 
 class AnalizadorConsistenciaGlobal(Analizador):

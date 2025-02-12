@@ -1,4 +1,4 @@
-from analizador import Analizador
+from src.gapfinder.analizador import Analizador
 
 class AnalizadorContinuidadRegistro(Analizador):
     def __init__(self, ruta):

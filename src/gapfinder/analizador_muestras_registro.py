@@ -1,4 +1,4 @@
-from analizador import Analizador
+from src.gapfinder.analizador import Analizador
 from obspy import read
 
 class AnalizadorMuestrasRegistros(Analizador):
@@ -24,5 +24,8 @@ class AnalizadorMuestrasRegistros(Analizador):
 
     def analizar_stream_sismico(self):
         self.anomalias = self.__analizar_muestra_registros(self.lista_stream)
-        for inconsistencia in self.anomalias:
-            print(inconsistencia)
+        #for inconsistencia in self.anomalias:
+        #    print(inconsistencia)
+
+    def se_registraron_anomalias(self):
+        return len(self.anomalias) > 0
