@@ -1,4 +1,4 @@
-from src.gapfinder.analizador import Analizador
+from analizador import Analizador
 from obspy import read
 
 class AnalizadorSaltosRegistro(Analizador):

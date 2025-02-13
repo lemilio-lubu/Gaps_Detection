@@ -1,4 +1,4 @@
-from src.gapfinder.analizador import Analizador
+from analizador import Analizador
 
 class AnalizadorContinuidadRegistro(Analizador):
     def __init__(self, ruta):
@@ -22,7 +22,7 @@ class AnalizadorContinuidadRegistro(Analizador):
             return False
         delta = 1.0 / stream[0].stats.sampling_rate
         
-        for i in range(len(stream)):
+        for i in range(0,len(stream)-1):
             registro_actual = stream[i]
             registro_siguiente = stream[i+1]
             fin_actual = registro_actual.stats.endtime

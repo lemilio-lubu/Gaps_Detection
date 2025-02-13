@@ -1,4 +1,4 @@
-from src.gapfinder.analizador import Analizador
+from analizador import Analizador
 from obspy import read
 
 class AnalizadorMuestrasRegistros(Analizador):
@@ -19,9 +19,9 @@ class AnalizadorMuestrasRegistros(Analizador):
         return anomalias
     
     def __existe_muestra_consistente(self, stream):
-        npts_base = stream.stats.npts
+        npts_base = stream[0].stats.npts
         # Verificar que todos los registros excepto el último tengan el mismo número de muestras que el primer registro.
-        for traza in stream:
+        for traza in stream[:-1]:
             if traza.stats.npts != npts_base:
                 return False  # Inconsistencia detectada: gap o overlap en las muestras.
         return True  # Todos los registros son consistentes.
