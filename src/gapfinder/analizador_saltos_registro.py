@@ -19,16 +19,19 @@ class AnalizadorSaltosRegistro(Analizador):
 
     
     def __analizar_salto_dias(self):
-        stream = []
-        for i in range(len(self.stream_julian_days)):
+        anomalias = []
+        for i in range(len(self.stream_julian_days) - 1):
             if self.__existe_salto(i):
-                stream.append(self.lista_stream[i])
-                stream.append(self.lista_stream[i+1])
-        return stream
+                anomalia = {
+                    "stream": self.lista_stream[i],
+                    "starttime": self.lista_stream[i][0].stats.starttime,
+                    "endtime": self.lista_stream[i+1][0].stats.endtime,
+                    "julian_day": self.stream_julian_days[i]
+                }
+                anomalias.append(anomalia)
+        return anomalias
     
     # Metodo publico polimorfico
     def analizar_stream_sismico(self):
         self.anomalias = self.__analizar_salto_dias()
-        for salto in self.anomalias:
-            print(salto)
-    
+        return self.anomalias  # Devolver las anomalías detectadas

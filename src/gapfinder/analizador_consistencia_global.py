@@ -16,16 +16,19 @@ class AnalizadorConsistenciaGlobal(Analizador):
         npts_calculado = round(duracion * sample_rate) + 1
         return (npts_esperado - npts_calculado) == 0
 
-
     def __analizar_consistencia_global(self):
-        
-        stream = []
-        for i in range(0, len(self.lista_stream)):
-            if not self.__existe_consistencia(self.lista_stream[i]):
-                stream.append(self.lista_stream[i])
-        return stream
+        anomalias = []
+        for i, stream in enumerate(self.lista_stream):
+            if not self.__existe_consistencia(stream):
+                anomalia = {
+                    "stream": stream,
+                    "starttime": stream[0].stats.starttime,
+                    "endtime": stream[-1].stats.endtime,
+                    "julian_day": stream[0].stats.starttime.julday
+                }
+                anomalias.append(anomalia)
+        return anomalias
 
     def analizar_stream_sismico(self):
         self.anomalias = self.__analizar_consistencia_global()
-        for inconsistencia in self.anomalias:
-            print(inconsistencia)
+        return self.anomalias  # Devolver las anomalías detectadas

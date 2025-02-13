@@ -1,25 +1,18 @@
-from analizador_consistencia_global import AnalizadorConsistenciaGlobal  # Asegúrate de que la importación sea correcta
-from analizador_muestras_registro import AnalizadorMuestrasRegistros
-from analizador_continuidad_registro import AnalizadorContinuidadRegistro
-from analizador_saltos_registro import AnalizadorSaltosRegistro
+
+from pipeline_analisis import PipelineAnalisis
 import os
 
 def main():
     #RUTA 
     RUTA = "ARNL/DATACENTER/HHE.D"  
     RUTA_STATION = "ARNL/STATION/"
-    
-    #Analizadores
-    #arnl_consistencia = AnalizadorConsistenciaGlobal(RUTA)  
-    arnl_registros = AnalizadorMuestrasRegistros(RUTA)
-    #arnl_continuidad = AnalizadorContinuidadRegistro(RUTA)
-    #arnl_saltos = AnalizadorSaltosRegistro(RUTA)
 
-    #Analisis
-    #arnl_saltos.analizar_stream_sismico()
-    #arnl_consistencia.analizar_stream_sismico()
-    #arnl_continuidad.analizar_stream_sismico()
-    arnl_registros.analizar_stream_sismico()
+    pipeline = PipelineAnalisis(RUTA)
+    resultados = pipeline.analizar()
+    print(resultados)
+    
+
+    #Reportes
     if arnl_registros.se_registraron_anomalias():
         #GENERA UN REPORTE DE LOS REGISTROS CON INCONSISTENCIAS
         reportero_arnl = GAPReporte(arnl_registros)
