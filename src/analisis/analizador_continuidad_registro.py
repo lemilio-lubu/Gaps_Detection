@@ -6,7 +6,7 @@ class AnalizadorContinuidadRegistro(Analizador):
 
     def __analizar_continuidad(self, lista_stream):
         anomalias = []
-        for i in range(len(lista_stream) - 1):
+        for i in range(0,len(lista_stream)):
             if not self.__existe_continuidad(lista_stream[i]):
                 anomalia = {
                     "stream": lista_stream[i],

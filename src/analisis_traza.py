@@ -1,5 +1,5 @@
 
-from pipeline_analisis import PipelineAnalisis
+from analisis.pipeline_analisis import PipelineAnalisis
 import os
 
 def main():

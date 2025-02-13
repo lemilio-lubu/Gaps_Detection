@@ -26,7 +26,8 @@ class AnalizadorSaltosRegistro(Analizador):
                     "stream": self.lista_stream[i],
                     "starttime": self.lista_stream[i][0].stats.starttime,
                     "endtime": self.lista_stream[i+1][0].stats.endtime,
-                    "julian_day": self.stream_julian_days[i]
+                    "julian_day": self.stream_julian_days[i],
+                    "julian_day_next": self.stream_julian_days[i+1]
                 }
                 anomalias.append(anomalia)
         return anomalias
