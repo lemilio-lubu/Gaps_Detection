@@ -1,5 +1,4 @@
 from typing import Dict, List, Callable
-from analisis.pipeline_analisis import PipelineAnalisis
 
 # Clase encargada de manejar eventos
 class RegistroEventos:

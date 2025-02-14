@@ -14,11 +14,16 @@ def main():
     
 
     #IDENTIFICACCIÓN DE GAPS
-    pipeline = PipelineAnalisis(RUTA_ARNL_DATACENTER)
-    resultados = pipeline.analizar()
+    pipeline_arnl = PipelineAnalisis(RUTA_ARNL_DATACENTER)
+    resultados_arnl = pipeline_arnl.analizar()
     
-    for key, value in resultados.items():
-        print(f"Anomalías detectadas por {key}: {value}")
+    pipeline_chl2 = PipelineAnalisis(RUTA_CHL2_DATACENTER)
+    resultados_chl2 = pipeline_chl2.analizar()
+
+    pipeline_pplp = PipelineAnalisis(RUTA_PPLP_DATACENTER)
+    resultados_pplp = pipeline_pplp.analizar()
+
+    
     
     #OBTENCION DE DATOS
     busqueda_gaps = BusquedaArchivo()
@@ -26,13 +31,15 @@ def main():
     estacion_arnl = Arnl()
     busqueda_gaps.eventos.suscribir("ARNL", estacion_arnl)
     
-    #estacion_chl2 = Chl2(RUTA_CHL2_ESTACION)
-    #busqueda_gaps.eventos.suscribir("CHL2", estacion_chl2)
+    estacion_chl2 = Chl2()
+    busqueda_gaps.eventos.suscribir("CHL2", estacion_chl2)
     
-    #estacion_pplp = Pplp(RUTA_PPLP_ESTACION)
-    #busqueda_gaps.eventos.suscribir("PPLP", estacion_pplp)
+    estacion_pplp = Pplp()
+    busqueda_gaps.eventos.suscribir("PPLP", estacion_pplp)
     
-    busqueda_gaps.procesar_archivos("ARNL", resultados)
+    busqueda_gaps.procesar_archivos("ARNL", resultados_arnl)
+    busqueda_gaps.procesar_archivos("CHL2", resultados_chl2)
+    busqueda_gaps.procesar_archivos("PPLP", resultados_pplp)
 
 if __name__ == "__main__":
     main()
