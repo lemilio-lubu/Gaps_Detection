@@ -1,7 +1,7 @@
-from analizador_consistencia_global import AnalizadorConsistenciaGlobal  
-from analizador_muestras_registro import AnalizadorMuestrasRegistros
-from analizador_continuidad_registro import AnalizadorContinuidadRegistro
-from analizador_saltos_registro import AnalizadorSaltosRegistro
+from analisis.analizador_consistencia_global import AnalizadorConsistenciaGlobal  
+from analisis.analizador_muestras_registro import AnalizadorMuestrasRegistros
+from analisis.analizador_continuidad_registro import AnalizadorContinuidadRegistro
+from analisis.analizador_saltos_registro import AnalizadorSaltosRegistro
 
 class PipelineAnalisis:
     def __init__(self, ruta):

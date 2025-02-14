@@ -1,4 +1,4 @@
-from analizador import Analizador
+from analisis.analizador import Analizador
 
 class AnalizadorContinuidadRegistro(Analizador):
     def __init__(self, ruta):
